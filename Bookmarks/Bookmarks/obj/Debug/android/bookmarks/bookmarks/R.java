@@ -14,7 +14,12 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int MyButton=0x7f050000;
+        public static final int BookmarkName=0x7f050000;
+        public static final int BookmarkUrl=0x7f050002;
+        public static final int DeleteBookmarkButton=0x7f050004;
+        public static final int EditBookmarkName=0x7f050001;
+        public static final int EditBookmarkUrl=0x7f050003;
+        public static final int MyButton=0x7f050005;
     }
     public static final class layout {
         public static final int bookmarkdetails=0x7f030000;
@@ -22,6 +27,7 @@ public final class R {
     }
     public static final class string {
         public static final int ApplicationName=0x7f040001;
+        public static final int DeleteBookmark=0x7f040002;
         public static final int Hello=0x7f040000;
     }
 }
