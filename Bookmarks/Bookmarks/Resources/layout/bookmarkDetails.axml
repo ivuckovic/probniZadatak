@@ -34,11 +34,17 @@
         android:maxLines="1"
         android:imeOptions="actionDone" />
     <Button
+        android:id="@+id/OpenUrl"
+        android:text="Open URL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UrlsText" />
+    <Button
         android:id="@+id/SaveButton"
         android:text="Save"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/UrlsText" />
+        android:layout_below="@+id/OpenUrl" />
     <Button
         android:id="@+id/CancelDeleteButton"
         android:text="Cancel"
