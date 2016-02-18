@@ -1,30 +1,61 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Widget;
+using Bookmarks.Core;
+using System.Collections.Generic;
 
 namespace Bookmarks
 {
     [Activity(Label = "Bookmarks", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+        Adapters.BookmarkListAdapter bookmarkList;
+        IList<Bookmark> bookmarks;
+        Button addBookmarkButton;
+        ListView bookmarkListView;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+            // set our layout to be the home screen
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            //Find our controls
+            bookmarkListView = FindViewById<ListView>(Resource.Id.BookmarkList);
+            addBookmarkButton = FindViewById<Button>(Resource.Id.AddButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            // wire up add task button handler
+            if (addBookmarkButton != null)
+            {
+            addBookmarkButton.Click += (sender, e) => {
+                    StartActivity(typeof(BookmarkDetailsScreen));
+                };
+            }
+
+            // wire up task click handler
+            if (bookmarkListView != null)
+            {
+                    bookmarkListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
+                    var taskDetails = new Intent(this, typeof(BookmarkDetailsScreen));
+                    taskDetails.PutExtra("BookmarkID", bookmarks[e.Position].ID);
+                    StartActivity(taskDetails);
+                };
+            }
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            bookmarks = BookmarkManager.GetTasks();
+
+            // create our adapter
+            bookmarkList = new Adapters.BookmarkListAdapter(this, bookmarks);
+
+            //Hook up our adapter to our ListView
+            bookmarkListView.Adapter = bookmarkList;
         }
     }
 }

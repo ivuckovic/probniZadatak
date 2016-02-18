@@ -4,8 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <Button
-        android:id="@+id/MyButton"
+        android:id="@+id/AddButton"
+        android:text="Add Bookmark"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Hello" />
+        android:layout_height="wrap_content" />
+    <ListView
+        android:id="@+id/BookmarkList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 </LinearLayout>

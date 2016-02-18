@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
+    android:layout_height="match_parent">
     <TextView
-        android:text="Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/BookmarkName" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/EditBookmarkName" />
+        android:id="@+id/BookmarkDetailsHeader"
+        android:text="Bookmark Details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
     <TextView
-        android:text="Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/BookmarkUrl" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/EditBookmarkUrl" />
-    <Button
-        android:id="@+id/DeleteBookmarkButton"
+        android:id="@+id/NameLabel"
+        android:text="Name:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/DeleteBookmark" />
-</LinearLayout>
+        android:layout_below="@+id/BookmarkDetailsHeader" />
+    <EditText
+        android:id="@+id/NameText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NameLabel"
+        android:imeOptions="actionNext"
+        android:maxLines="1" />
+    <TextView
+        android:id="@+id/UrlsLabel"
+        android:text="Url:"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NameText" />
+    <EditText
+        android:id="@+id/UrlsText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UrlsLabel"
+        android:maxLines="1"
+        android:imeOptions="actionDone" />
+    <Button
+        android:id="@+id/SaveButton"
+        android:text="Save"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UrlsText" />
+    <Button
+        android:id="@+id/CancelDeleteButton"
+        android:text="Cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SaveButton" />
+</RelativeLayout>
