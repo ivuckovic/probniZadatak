@@ -14,7 +14,6 @@ namespace Bookmarks
         EditText urlsTextEdit;
         EditText nameTextEdit;
         Button saveButton;
-        Button openURL;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -31,8 +30,7 @@ namespace Bookmarks
             nameTextEdit = FindViewById<EditText>(Resource.Id.NameText);
             urlsTextEdit = FindViewById<EditText>(Resource.Id.UrlsText);
             saveButton = FindViewById<Button>(Resource.Id.SaveButton);
-            openURL = FindViewById<Button>(Resource.Id.OpenUrl);
-
+            
             // find all our controls
             cancelDeleteButton = FindViewById<Button>(Resource.Id.CancelDeleteButton);
 
@@ -45,34 +43,9 @@ namespace Bookmarks
             // button clicks 
             cancelDeleteButton.Click += (sender, e) => { CancelDelete(); };
             saveButton.Click += (sender, e) => { Save(); };
-            if (urlsTextEdit.Text == "")
-            {
-                openURL.Activated = false;
-            }
-            openURL.Click += (sender, e) =>{ Open();  };
             
         }
         
-        void Open()
-        {
-            string url;
-            if (!urlsTextEdit.Text.StartsWith("http"))
-            {
-                url = "http://" + urlsTextEdit.Text;
-            }
-            else
-            {
-                url = urlsTextEdit.Text;
-            }
-            Android.Net.Uri uri = Android.Net.Uri.Parse(url);
-            Intent intent = new Intent(Intent.ActionView);
-            
-	        intent.SetData (uri);
-
-	        Intent chooser = Intent.CreateChooser (intent, "Open with");
-
-	        this.StartActivity(chooser);
-        }
         void Save()
         {
             bookmark.Name = nameTextEdit.Text;
