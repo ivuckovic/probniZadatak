@@ -71,7 +71,7 @@ namespace Bookmarks
         {
             base.OnResume();
 
-            bookmarks = BookmarkManager.GetTasks();
+            bookmarks = BookmarkManager.GetBookmarks();
 
             // create our adapter
             bookmarkList = new Adapters.BookmarkListAdapter(this, bookmarks);

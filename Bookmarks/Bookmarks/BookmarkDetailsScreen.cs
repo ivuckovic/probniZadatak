@@ -22,7 +22,7 @@ namespace Bookmarks
             int taskID = Intent.GetIntExtra("BookmarkID", 0);
             if (taskID > 0)
             {
-                bookmark = BookmarkManager.GetTask(taskID);
+                bookmark = BookmarkManager.GetBookmark(taskID);
             }
 
             // set our layout to be the home screen
@@ -50,7 +50,7 @@ namespace Bookmarks
         {
             bookmark.Name = nameTextEdit.Text;
             bookmark.Url = urlsTextEdit.Text;
-            BookmarkManager.SaveTask(bookmark);
+            BookmarkManager.SaveBookmark(bookmark);
             Finish();
         }
 
@@ -58,7 +58,7 @@ namespace Bookmarks
         {
             if (bookmark.ID != 0)
             {
-                BookmarkManager.DeleteTask(bookmark.ID);
+                BookmarkManager.DeleteBookmark(bookmark.ID);
             }
             Finish();
         }

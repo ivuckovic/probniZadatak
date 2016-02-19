@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Bookmarks.Core
 {
@@ -10,22 +10,23 @@ namespace Bookmarks.Core
         { }
 
 
-        public static Bookmark GetTask(int id)
+        public static Bookmark GetBookmark(int id)
         {
             return BookmarkRepositoryADO.GetBookmark(id);
         }
 
-        public static IList<Bookmark> GetTasks()
+        public static IList<Bookmark> GetBookmarks()
         {
-            return new List<Bookmark>(BookmarkRepositoryADO.GetBookmarks());
+            List<Bookmark> bookmarks = new List<Bookmark>(BookmarkRepositoryADO.GetBookmarks());
+            return new List<Bookmark>(bookmarks.OrderBy(x => x.Name).ToList());
         }
 
-        public static int SaveTask(Bookmark item)
+        public static int SaveBookmark(Bookmark item)
         {
             return BookmarkRepositoryADO.SaveBookmark(item);
         }
 
-        public static int DeleteTask(int id)
+        public static int DeleteBookmark(int id)
         {
             return BookmarkRepositoryADO.DeleteBookmark(id);
         }
